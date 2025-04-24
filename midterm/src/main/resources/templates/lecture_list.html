@@ -1,0 +1,26 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="content" class="container my-3">
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th>번호</th>
+                <th>강의명</th>
+                <th>교수</th>
+				<th>강의 내용</th>
+				<th>날짜</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="lecture, loop : ${lectureList}">
+                <td th:text="${loop.count}"></td>
+                <td>
+                    <a th:href="@{|/lecture/detail/${lecture.id}|}" th:text="${lecture.lname}"></a>
+                </td>
+				<td th:text="${lecture.professor}"></td>
+				<td th:text="${lecture.content}"></td>
+                <td th:text="${#temporals.format(lecture.createDate, 'yyyy-MM-dd HH:mm')}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</html>

@@ -23,7 +23,7 @@ class SbbApplicationTests {
 
     @Autowired
     private QuestionRepository questionRepository;
-    
+//    
 //    @Test
 //    void testJpa() {        
 //        Question q1 = new Question();
@@ -39,14 +39,14 @@ class SbbApplicationTests {
 //        this.questionRepository.save(q2);  // 두번째 질문 저장
 //    }
     
-    @Test
-    void testJpa() {
-        List<Question> all = this.questionRepository.findAll();
-        assertEquals(2, all.size());
-
-        Question q = all.get(0);
-        assertEquals("sbb가 무엇인가요?", q.getSubject());
-    }
+//    @Test
+//    void testJpa() {
+//        List<Question> all = this.questionRepository.findAll();
+//        assertEquals(2, all.size());
+//
+//        Question q = all.get(0);
+//        assertEquals("sbb가 무엇인가요?", q.getSubject());
+//    }
     
 //    @Test
 //    void testJpa() {
@@ -132,32 +132,50 @@ class SbbApplicationTests {
 //        assertEquals("네 자동으로 생성됩니다.", answerList.get(0).getContent());
 //    }
     
-//   @Autowired
-//   private StudentsRepository studentsRepository;
-//    
-//    @Test
-//    void testJpa() {
-//    	// 학생 데이터 저장
-//        Students student1 = new Students();
-//        student1.setStid("2214440");
-//        student1.setAdd("서울특별시 용산구 청파로");
-//        student1.setGrade(4);
-//        student1.setName("김지현");
-//        studentsRepository.save(student1);
-//
-//        Students student2 = new Students();
-//        student2.setStid("2110659");
-//        student2.setAdd("서울특별시 용산구 청파로");
-//        student2.setGrade(4);
-//        student2.setName("최선호");
-//        studentsRepository.save(student2);
+   @Autowired
+   private StudentsRepository studentsRepository;
+
+    @Test
+    void testJpa() {
+    	// 학생 데이터 저장
+        Students student1 = new Students();
+        student1.setStid("2214440");
+        student1.setAdd("서울특별시 용산구 청파로");
+        student1.setGrade(4);
+        student1.setName("김지현");
+        student1.setGmemo("나는 홍길동이고 취미는 등산입니다. 책읽는것도 아주 좋아 합니다.");
+        studentsRepository.save(student1);
+
+        Students student2 = new Students();
+        student2.setStid("2110659");
+        student2.setAdd("서울특별시 용산구 청파로");
+        student2.setGrade(4);
+        student2.setName("최선호");
+        student2.setGmemo("나는 홍길동이고 취미는 등산입니다. 책읽는것도 아주 좋아 합니다.");
+        studentsRepository.save(student2);
+        
+
+        Students student3 = new Students();
+        student3.setStid("2222222");
+        student3.setAdd("서울특별시 용산구 청파로");
+        student3.setGrade(4);
+        student3.setName("sss");
+        student3.setGmemo("나 취미는 등산입니다. 책읽는것도 아주 좋아 합니다.");
+        studentsRepository.save(student3);
+
+//        Students q = this.studentsRepository.findByName("김지현");  
+//    	System.out.println("ID: " + q.getStid());
+//    	System.out.println("이름: " + q.getName());
+//    	System.out.println("학년: " + q.getGrade());
+//    	System.out.println("주소: " + q.getAdd());
+//    	System.out.println("메모: " + q.getGmemo());
+//    	
+//        assertEquals("2214440", q.getStid());
 //        
-//        // 학번으로 이름 구하기 
-//        Students studentId = studentsRepository.findByStid("2214440");
-//        assertEquals("김지현", studentId.getName());
-//        
-//        // 이름으로 학번 구하기
-//        Students studentName = studentsRepository.findByName("김지현");
-//        assertEquals("2214440", studentName.getStid());
-//    }
+//        Optional<Students> oq = this.studentsRepository.findById("2214440");
+//    	if(oq.isPresent()) {
+//    		Students q2 = oq.get();
+//    		assertEquals("김지현",q2.getName());
+//    	}
+    }
 }

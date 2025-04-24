@@ -1,0 +1,27 @@
+<link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
+<div class="container my-3">
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th>학번</th>
+				<th>이름</th>
+				<th>주소</th>
+				<th>학년</th>
+				<th>메모</th>
+				<th>date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="student, loop : ${studentList}">
+                <td>
+                    <a th:href="@{|/student/detail/${student.sId}|}" th:text="${student.sId}"></a>
+                </td>
+				<td th:text="${student.username}"></td>
+				<td th:text="${student.address}"></td>
+				<td th:text="${student.grade}"></td>
+				<td th:text="${student.memo}"></td>
+                <td th:text="${#temporals.format(student.createDate, 'yyyy-MM-dd HH:mm')}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

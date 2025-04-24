@@ -1,0 +1,34 @@
+<link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
+<div class="container my-3">
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th>학번</th>
+                <th>이름</th>
+                <th>주소</th>
+				<th>학년</th>
+				<th>메모</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="students, loop : ${studentsList}">
+                <td>
+                    <a th:text="${students.stid}"></a>
+                </td>					
+				<td>
+					<a th:text="${students.name}"></a>
+				</td>					
+				<td>
+					<a th:text="${students.add}"></a>
+				</td>					
+				<td>
+					<a th:text="${students.grade}"></a>
+				</td>					
+				<td>
+					<a th:text="${students.gmemo}"></a>
+				</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</html>

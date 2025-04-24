@@ -18,10 +18,13 @@ public class Students {
     @Column(length=20)
     private String add;
 
-    @Column()
+    @Column
 	private Integer grade;
 
     @Column(length=10) 
 	private String name;
+    
+    @Column(columnDefinition = "TEXT")
+    private String gmemo;
 
 }

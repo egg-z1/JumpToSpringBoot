@@ -1,0 +1,60 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="content" class="container my-3">
+    <h2 class="border-bottom py-2" th:text="${lecture.lname}"></h2>
+    <div class="card my-3">
+        <div class="card-body">
+            <div class="card-text" style="white-space: pre-line;" th:text="${lecture.content}"></div>
+            <div class="d-flex justify-content-end">
+                <div class="badge bg-light text-dark p-2 text-start">
+                    <div th:text="${#temporals.format(lecture.createDate, 'yyyy-MM-dd HH:mm')}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h5 class="border-bottom my-3 py-2" 
+        th:text="|${#lists.size(lecture.studentList)}개의 학생이 있습니다.|"></h5>
+    
+		<div class="my-3" th:each="student : ${lecture.studentList}">
+		        <div class="card">
+		            <div class="card-body">
+		                <h5 class="card-title mb-3" th:text="|학번: ${student.sid}|"></h5>
+		                <ul class="list-group list-group-flush mb-3">
+		                    <li class="list-group-item" th:text="|이름: ${student.sname}|"></li>
+		                    <li class="list-group-item" th:text="|학년: ${student.grade}|"></li>
+		                    <li class="list-group-item" th:text="|전공: ${student.major}|"></li>
+		                </ul>
+		                <div class="text-end">
+		                    <span class="badge bg-secondary" th:text="${#temporals.format(student.createDate, 'yyyy-MM-dd HH:mm')}"></span>
+		                </div>
+		            </div>
+		    </div>
+		</div>
+	<form th:action="@{|/student/add/${lecture.id}|}" method="get" class="my-3">
+	    <div class="mb-2">
+	        <label for="sid" class="form-label">기존 학생 학번</label>
+	        <input type="number" name="sid" id="sid" class="form-control" required>
+	    </div>
+	    <input type="submit" value="기존 학생 추가" class="btn btn-success my-2">
+	</form>
+
+	<form th:action="@{|/student/create/${lecture.id}|}" method="get" class="my-3">
+	    <div class="mb-2">
+	        <label for="sid" class="form-label">학번</label>
+	        <input type="number" name="sid" id="sid" class="form-control">
+	    </div>
+	    <div class="mb-2">
+	        <label for="sname" class="form-label">이름</label>
+	        <input type="text" name="sname" id="sname" class="form-control">
+	    </div>
+	    <div class="mb-2">
+	        <label for="grade" class="form-label">학년</label>
+	        <input type="number" name="grade" id="grade" class="form-control">
+	    </div>
+	    <div class="mb-2">
+	        <label for="major" class="form-label">전공</label>
+	        <input type="text" name="major" id="major" class="form-control">
+	    </div>
+	    <input type="submit" value="학생 등록" class="btn btn-primary my-2">
+	</form>
+</div>
+</html>

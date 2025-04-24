@@ -1,0 +1,18 @@
+<link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
+<div class="container my-3">
+    <h2 class="border-bottom py-2" th:text="${student.sId}"></h2>
+    <div class="card my-3">
+        <div class="card-body">
+            <div class="card-text" style="white-space: pre-line;" th:text="${student.memo}"></div>
+            <div class="d-flex justify-content-end">
+                <div class="badge bg-light text-dark p-2 text-start">
+                    <div th:text="${#temporals.format(student.createDate, 'yyyy-MM-dd HH:mm')}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form th:action="@{|/student/modify/${student.sId}|}" method="post" class="my-3">
+        <textarea name="memo" id="memo" rows="10" class="form-control"></textarea>
+        <input type="submit" value="메모수정" class="btn btn-primary my-2">
+    </form>
+</div>
